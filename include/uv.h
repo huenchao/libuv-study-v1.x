@@ -474,10 +474,10 @@ UV_EXTERN uv_buf_t uv_buf_init(char* base, unsigned int len);
 
 
 #define UV_STREAM_FIELDS                                                      \
-  /* number of bytes queued for writing */                                    \
-  size_t write_queue_size;                                                    \
-  uv_alloc_cb alloc_cb;                                                       \
-  uv_read_cb read_cb;                                                         \
+  /* number of bytes queued for writing 共有字段： */                                    \
+  size_t write_queue_size;  /* 等待写的字节数 */                                                  \
+  uv_alloc_cb alloc_cb; /* 用于分配空间的函数指针 */                                                            \
+  uv_read_cb read_cb;    /* 读取数据完成之后的回调函数 */                                                            \
   /* private */                                                               \
   UV_STREAM_PRIVATE_FIELDS
 

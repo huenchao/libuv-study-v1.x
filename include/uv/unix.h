@@ -284,15 +284,15 @@ typedef struct {
   unsigned int flags;                                                         \
 
 #define UV_STREAM_PRIVATE_FIELDS                                              \
-  uv_connect_t *connect_req;                                                  \
-  uv_shutdown_t *shutdown_req;                                                \
-  uv__io_t io_watcher;                                                        \
-  void* write_queue[2];                                                       \
-  void* write_completed_queue[2];                                             \
-  uv_connection_cb connection_cb;                                             \
-  int delayed_error;                                                          \
-  int accepted_fd;                                                            \
-  void* queued_fds;                                                           \
+  uv_connect_t *connect_req;      /* 连接请求 */                                          \
+  uv_shutdown_t *shutdown_req;     /* 关闭请求 */                                              \
+  uv__io_t io_watcher;             /*  I/O观察者（has-a） */                                           \
+  void* write_queue[2];            /* 写数据队列 */                                           \
+  void* write_completed_queue[2];  /*  完成的写数据队列 */                                           \
+  uv_connection_cb connection_cb;   /* 有新连接时的回调函数 */                                          \
+  int delayed_error;    /* 延迟的错误 */                                                      \
+  int accepted_fd;     /* 对端的fd */                                                       \
+  void* queued_fds;     /*  排队的文件描述符列表 */                                                      \
   UV_STREAM_PRIVATE_PLATFORM_FIELDS                                           \
 
 #define UV_TCP_PRIVATE_FIELDS /* empty */

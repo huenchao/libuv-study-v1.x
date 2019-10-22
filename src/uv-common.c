@@ -214,6 +214,7 @@ int uv_ip4_addr(const char* ip, int port, struct sockaddr_in* addr) {
 #ifdef SIN6_LEN
   addr->sin_len = sizeof(*addr);
 #endif
+  //Cross-platform IPv6-capable implementation of inet_ntop(3) and inet_pton(3). On success they return 0. In case of error the target dst pointer is unmodified.
   return uv_inet_pton(AF_INET, ip, &(addr->sin_addr.s_addr));
 }
 
